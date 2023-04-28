@@ -1,0 +1,275 @@
+@mixin laptop {
+  @media (max-width: #{$laptop}) {
+    @content;
+  }
+}
+
+@mixin laptop-middle {
+  @media (max-width: #{$laptop-middle}) {
+    @content;
+  }
+}
+
+@mixin laptop-small {
+  @media (max-width: #{$laptop-small}) {
+    @content;
+  }
+}
+
+@mixin tablet-big {
+  @media (max-width: #{$tablet-big}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin tablet-small {
+  @media (max-width: #{$tablet-small}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin media-hover {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin b_64($val) {
+  background-image: url($val);
+}
+
+@mixin base_64($val) {
+  background-image: url('data:image/png;base64,' + $val);
+}
+
+@mixin base_64_important($val) {
+  background-image: url('data:image/png;base64,' + $val) !important;
+}
+
+@mixin pl_color($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+}
+
+//grouping background
+@mixin bg_img($repeat, $position, $size) {
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
+}
+
+//grouping position
+@mixin position(
+  $position,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin fixed($args...) {
+  @include position(fixed, $args...);
+}
+
+@mixin absolute($args...) {
+  @include position(absolute, $args...);
+}
+
+@mixin relative($args...) {
+  @include position(relative, $args...);
+}
+
+@mixin static($args...) {
+  @include position(static, $args...);
+}
+
+//grouping flex
+
+@mixin helper($align: null, $justify: null) {
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin flex($args...) {
+  display: flex;
+  @include helper($args...);
+}
+
+@mixin inline-flex($args...) {
+  display: inline-flex;
+  @include helper($args...);
+}
+
+$padding: 10px;
+
+@mixin row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+
+  @include mobile {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@mixin col {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include mobile {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@mixin object-fit {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@mixin position-top-left {
+  content: '';
+  @include absolute($top: 0, $left: 0);
+  width: 100%;
+  height: 100%;
+}
+
+@mixin state {
+
+  &:active {
+    @content;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin proportion($width, $height) {
+  padding-bottom: calc(100% * (#{$height} / #{$width}));
+}
+
+
+@mixin scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+@mixin font-face($name, $file, $weight: 400, $style: normal) {
+  @font-face {
+    font-family: "#{$name}";
+    src: local("#{$file}"),
+    url('../fonts/#{$file}.woff2') format('woff2'),
+    url('../fonts/#{$file}.woff') format('woff');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@mixin bg($size:"contain", $position: "center") {
+  background-size: #{$size};
+  background-position: #{$position};
+  background-repeat: no-repeat;
+}
+
+@mixin btn_anim($scaleMax:1.05, $scaleMin:0.95) {
+  transform-origin: center center;
+  transition: all ease-out 240ms;
+
+  &:hover {
+    transform: scale(#{$scaleMax});
+  }
+
+  &:focus {
+    outline: transparent;
+  }
+
+  &:focus-visible {
+    transform: scale(#{$scaleMax}) translateY(-5%);
+  }
+
+  &:active {
+    transform: scale(#{$scaleMin});
+  }
+}
+
+@mixin no-btn($display:"inline-block") {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+  border-radius: 0;
+  cursor: pointer;
+  appearance: none;
+  display: #{$display};
+}
+
+@mixin transit($tr:0.24) {
+  transition: all #{$tr}s;
+}
+
+@mixin container($max-width:"120rem", $padding:"2rem") {
+  width: 100%;
+  max-width: #{$max-width};
+  padding: 0 #{$padding};
+  margin: 0 auto;
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}

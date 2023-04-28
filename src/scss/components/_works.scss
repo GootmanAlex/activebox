@@ -1,0 +1,75 @@
+.works {
+  overflow: hidden;
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -1px;
+    margin-bottom: -1px;
+  }
+
+  &__item {
+    position: relative;
+    border-bottom: 1px solid $color-white;
+    border-right: 1px solid $color-white;
+    width: $colWidth * 3;
+    height: 350px;
+    overflow: hidden;
+    cursor: pointer;
+
+    @include tablet {
+      width: $colWidth * 4;
+      height: 300px;
+    }
+
+    @include tablet-small {
+      width: $colWidth * 6;
+    }
+
+    @include mobile {
+      width: $colWidth * 12;
+    }
+
+    &:hover {
+      .works {
+        &__content {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    @include flex(center, center);
+    flex-direction: column;
+    height: 100%;
+    background-color: rgba($color-red, 0.9);
+    transition: transform ease 0.5s;
+    transform: translateY(-100%);
+  }
+
+  &__name, &__text {
+    font-size: 14px;
+    line-height: 100%;
+  }
+
+  &__name {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    margin-top: 11px;
+  }
+
+  &__image {
+    @include absolute($top: 0, $left: 0);
+    width: 100%;
+    height: 100%;
+  }
+
+  &__image-item {
+    @include object-fit;
+  }
+}

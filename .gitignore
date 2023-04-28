@@ -1,0 +1,11 @@
+/node_modules/*
+/.idea
+*.sql
+*.zip
+*.xml
+*.html
+/*.htaccess
+.sass-cache
+.usermin
+.xlsx
+.csv
