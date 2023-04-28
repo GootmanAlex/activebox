@@ -10,13 +10,8 @@
     "hot": "mix watch --hot",
     "build": "mix --production"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/Gootman/activebox.git"
-  },
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/GootmanAlex/activebox",
   "devDependencies": {
     "browser-sync": "^2.29.1",
     "browser-sync-webpack-plugin": "^2.3.0",
