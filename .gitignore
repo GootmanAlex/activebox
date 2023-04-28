@@ -3,7 +3,7 @@
 *.sql
 *.zip
 *.xml
-*.html
+html
 /*.htaccess
 .sass-cache
 .usermin
